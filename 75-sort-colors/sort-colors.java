@@ -4,7 +4,7 @@ class Solution {
        int temp;
         for(int i=0;i<n;i++)
         {
-            boolean swap=false;
+            
             for(int j=0;j<n-i-1;j++)
             {
                 if(a[j]>a[j+1])
@@ -12,13 +12,10 @@ class Solution {
                     temp=a[j];
                     a[j]=a[j+1];
                     a[j+1]=temp;
-                    swap=true;
+                   
                 }
             }
-            if(!swap)
-            {
-                break;
-            }
+           
         }
         
     }
