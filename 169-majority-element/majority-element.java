@@ -1,40 +1,39 @@
 class Solution {
-     public int majorityElement(int[] nums) {
-        // Size of the given array
+    public int majorityElement(int[] nums) {
+        
         int n = nums.length;
-        
-        // Count variable
-        int cnt = 0;
-        
-        // Candidate element
-        int el = 0;
-        
-        // Step 1: Find the potential majority element
+        int candidate = 0;
+        int votes = 0;
+
+        // Find candidate
         for (int i = 0; i < n; i++) {
-            if (cnt == 0) {
-                cnt = 1;
-                el = nums[i];
-            } else if (el == nums[i]) {
-                cnt++;
-            } else {
-                cnt--;
+
+            if (votes == 0) {
+                candidate = nums[i];
+                votes = 1;
+            }
+            else if (candidate == nums[i]) {
+                votes++;
+            }
+            else {
+                votes--;
             }
         }
-        
-        // Step 2: Verify the candidate
-        int cnt1 = 0;
+
+        // Verify candidate
+        int count = 0;
+
         for (int i = 0; i < n; i++) {
-            if (nums[i] == el) {
-                cnt1++;
+
+            if (nums[i] == candidate) {
+                count++;
             }
         }
-        
-        // Return the element if it's a majority
-        if (cnt1 > (n / 2)) {
-            return el;
+
+        if (count > n / 2) {
+            return candidate;
         }
-        
-        // No majority found
+
         return -1;
     }
 }
