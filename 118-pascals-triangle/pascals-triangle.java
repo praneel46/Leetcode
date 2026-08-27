@@ -1,31 +1,28 @@
 class Solution {
-    public List<List<Integer>> generate(int numRows) {
-        
-        List<List<Integer>> result = new ArrayList<>();
-
-        for (int i = 0; i < numRows; i++) {
-            
-            List<Integer> row = new ArrayList<>();
-
-            // First element
-            row.add(1);
-
-            // Middle elements
-            for (int j = 1; j < i; j++) {
-                int value = result.get(i - 1).get(j - 1)
-                          + result.get(i - 1).get(j);
-
-                row.add(value);
-            }
-
-            // Last element
-            if (i > 0) {
-                row.add(1);
-            }
-
-            result.add(row);
+    public List<Integer> generateRow(int row)
+    {
+        List<Integer> ansROW = new ArrayList<>();
+        long val=1;
+        ansROW.add(1);
+        for(int col=1;col<row;col++)
+        {
+            val=val*(row-col);
+            val=val/col;
+            ansROW.add((int) val);
         }
+        return ansROW;
 
-        return result;
+    }
+    public List<List<Integer>> generate(int N)
+     {
+        List<List<Integer>> pascal=new ArrayList<>();
+        for(int i=1;i<=N;i++)
+        {
+            pascal.add(generateRow(i));
+        }
+        return pascal;
+
+
+        
     }
 }
