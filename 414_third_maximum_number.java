@@ -1,17 +1,13 @@
-class Solution
- {
-    public int thirdMax(int[] nums)
-     {
-
+class Solution 
+{
+    public int thirdMax(int[] nums) 
+    {
+        int n = nums.length;
         Arrays.sort(nums);
         reverse(nums);
-
         int count = 1;
-
-        for (int i = 1; i < nums.length; i++) 
-        {
-
-            
+        for (int i = 1; i < n; i++)
+         {
             if (nums[i] != nums[i - 1])
              {
                 count++;
@@ -21,17 +17,14 @@ class Solution
                 }
             }
         }
-
         return nums[0];
     }
 
-    public static void reverse(int[] nums)
-     {
+    public static void reverse(int[] nums) {
         int left = 0;
         int right = nums.length - 1;
 
-        while (left < right)
-         {
+        while (left < right) {
             int temp = nums[left];
             nums[left] = nums[right];
             nums[right] = temp;
